@@ -34,4 +34,23 @@ class UserController extends Controller
     public function toUser(){
         return view('userpage');
     }
+    public function toRegister(){
+        return view('user_registerpage');
+    }
+
+    public function registerControl(Request $request){
+        $request->validate([
+            "username" => 'required|alpha:ascii|unique:users',
+            "password" => 'required|min:6',
+            "usertitle" => 'required',
+        ]);
+
+        User::create([
+            'usertitle' => $request->usertitle,
+            'username' => $request->username,
+            'password' => $request->password,
+        ]);
+
+        return view('user_registerpage');
+    }
 }

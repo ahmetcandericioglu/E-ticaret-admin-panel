@@ -7,12 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-ticaret-user</title>
 </head>
+
+<body>
 <header>
     <a href="{{route('home')}}">Home</a>
 </header>
-<body>
     <h1>User</h1>
-    <a href="">New User</a>
+    <a href="{{route('register')}}">New User</a>
     <br>
     <a href="">User List</a>
     <br>
