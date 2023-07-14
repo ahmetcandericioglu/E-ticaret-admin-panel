@@ -10,11 +10,17 @@
 <body>
 <div>
     <h1>Login</h1>
-    <form action="" method="post">
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    @endif
+    <form action="{{route('login')}}" method="post">
+        @csrf
+        <p>Username:</p>
         <input type="text" name="username" id="name">
-        <br>
-        <br>
-        <input type="text" name="password" id="pass">
+        <p>Password:</p>
+        <input type="password" name="password" id="pass">
         <br>
         <br>
         <button type="submit">Login</button>
