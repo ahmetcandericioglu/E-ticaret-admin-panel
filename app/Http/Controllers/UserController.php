@@ -27,7 +27,7 @@ class UserController extends Controller
             }
             return view('homepage');
         }
-
-        return view('loginpage');
+        echo "There is no user with name '". $request->username . "'";
+        return;
     }
 }
