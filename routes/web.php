@@ -14,5 +14,10 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [UserController::class, 'index']);
+Route::get('/', function () {
+    return view('homepage');
+})->name('home');
+
 Route::post('/home', [UserController::class, 'loginControl'])->name('login');
 Route::get('/home', [UserController::class, 'loginControl'])->name('login');
+Route::get('/user', [UserController::class, 'toUser'])->name('user');

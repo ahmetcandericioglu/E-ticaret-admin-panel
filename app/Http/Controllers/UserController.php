@@ -30,4 +30,8 @@ class UserController extends Controller
         echo "There is no user with name '". $request->username . "'";
         return;
     }
+
+    public function toUser(){
+        return view('userpage');
+    }
 }

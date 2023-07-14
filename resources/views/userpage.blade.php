@@ -5,10 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E-ticaret-admin</title>
+    <title>E-ticaret-user</title>
 </head>
+<header>
+    <a href="{{route('home')}}">Home</a>
+</header>
 <body>
-<h1>Home</h1>
-<a href="{{route('user')}}">User</a>
+    <h1>User</h1>
+    <a href="">New User</a>
+    <br>
+    <a href="">User List</a>
+    <br>
+    <a href="">Delete User</a>
 </body>
 </html>
