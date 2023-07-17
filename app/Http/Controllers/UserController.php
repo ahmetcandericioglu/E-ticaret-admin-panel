@@ -118,4 +118,10 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('userlist');
     }
+
+    public function deleteUsers(Request $request){
+        $ids = $request->selectedids;
+        User::whereIn('id', $ids)->delete();
+        return redirect()->route('userlist');
+    }
 }
