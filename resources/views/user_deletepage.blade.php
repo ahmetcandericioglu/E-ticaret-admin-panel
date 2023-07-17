@@ -11,7 +11,7 @@
 <header>
     <a href="{{route('home')}}">Home</a>
     <a href="{{route('user')}}">User</a>
-    <a href="{{route('category')}}">User</a>
+    <a href="{{route('category')}}">Category</a>
 </header>
 @if($errors->any())
     @foreach($errors->all() as $error)

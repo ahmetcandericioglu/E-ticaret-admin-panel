@@ -17,6 +17,9 @@ Route::get('/', [UserController::class, 'index']);
 Route::get('/home', function () {
     return view('homepage');
 })->name('home');
+Route::get('/category', function () {
+    return view('categorypage');
+})->name('category');
 
 Route::post('/home', [UserController::class, 'loginControl'])->name('login');
 Route::get('/user', [UserController::class, 'toUser'])->name('user');

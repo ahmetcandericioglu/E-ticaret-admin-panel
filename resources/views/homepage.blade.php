@@ -11,7 +11,7 @@
 <header>
     <a href="{{route('home')}}">Home</a>
     <a href="{{route('user')}}">User</a>
-    <a href="{{route('category')}}">User</a>
+    <a href="{{route('category')}}">Category</a>
 </header>
 <h1>Home</h1>
 <a href="{{route('user')}}">User</a>
