@@ -53,4 +53,9 @@ class UserController extends Controller
 
         return view('user_registerpage');
     }
+
+    public function toUserList(){
+        $users = User::all();
+        return view('listpage', ["users" => $users]);
+    }
 }

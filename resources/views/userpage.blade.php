@@ -15,7 +15,7 @@
     <h1>User</h1>
     <a href="{{route('register')}}">New User</a>
     <br>
-    <a href="">User List</a>
+    <a href="{{route('userlist')}}">User List</a>
     <br>
     <a href="">Delete User</a>
 </body>

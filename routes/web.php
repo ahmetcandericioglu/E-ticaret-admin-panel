@@ -23,3 +23,4 @@ Route::get('/home', [UserController::class, 'loginControl'])->name('login');
 Route::get('/user', [UserController::class, 'toUser'])->name('user');
 Route::get('/register', [UserController::class, 'toRegister'])->name('register');
 Route::post('/register', [UserController::class, 'registerControl'])->name('register_user');
+Route::get('/userlist', [UserController::class, 'toUserList'])->name('userlist');
