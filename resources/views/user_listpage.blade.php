@@ -29,8 +29,8 @@
                     <td>{{$user->usertitle}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->password}}</td>
-                    <td><a href="{{route('edit',['user'=>$user])}}">düzenle</a></td>
-                    <td><a href="">sil</a></td>
+                    <td><a href="{{route('edit',['user' => $user])}}">düzenle</a></td>
+                    <td><a href="{{route('delete',['user' => $user])}}">sil</a></td>
                 </tr>
             @endforeach
             </tbody>

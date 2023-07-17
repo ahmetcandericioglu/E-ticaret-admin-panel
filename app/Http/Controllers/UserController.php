@@ -62,4 +62,8 @@ class UserController extends Controller
     public function toUpdateUser(User $user){
         return view('user_editpage', ['user' => $user]);
     }
+
+    public function toDeleteUser(user $user){
+        return view('user_deletepage', ['user' => $user]);
+    }
 }
