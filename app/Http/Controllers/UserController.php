@@ -55,7 +55,7 @@ class UserController extends Controller
             'password' => $request->password,
         ]);
 
-        return view('user_registerpage');
+        return redirect()->route('userlist');
     }
 
     public function toUserList()
@@ -86,8 +86,9 @@ class UserController extends Controller
             $duplicate = User::where('username', '=', $request->username_edit)->first();
             if ($request->username_edit)
                 if (!($duplicate == "")) {
-                    echo "Username already taken";
-                    return;
+                    $request->validate([
+                        "username_edit" => "unique:users",
+                    ]);
                 }
         }
         $passwordChange = false;
@@ -121,6 +122,7 @@ class UserController extends Controller
 
     public function deleteUsers(Request $request){
         $ids = $request->selectedids;
+        if (!($ids == null))
         User::whereIn('id', $ids)->delete();
         return redirect()->route('userlist');
     }

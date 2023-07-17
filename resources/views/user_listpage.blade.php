@@ -10,10 +10,12 @@
 <body>
 <header>
     <a href="{{route('home')}}">Home</a>
+    <a href="{{route('user')}}">User</a>
+    <a href="{{route('category')}}">User</a>
 </header>
 <div>
     <h1>Users</h1>
-    <form action="{{route('delete_users')}}" method="post">
+    <form action="{{route('delete_users')}}" method="post" onsubmit=" return confirm('Are You Sure?') " >
         @csrf
         <div>
             <table>

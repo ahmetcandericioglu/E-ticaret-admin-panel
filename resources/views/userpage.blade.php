@@ -11,12 +11,12 @@
 <body>
 <header>
     <a href="{{route('home')}}">Home</a>
+    <a href="{{route('user')}}">User</a>
+    <a href="{{route('category')}}">User</a>
 </header>
     <h1>User</h1>
     <a href="{{route('register')}}">New User</a>
     <br>
     <a href="{{route('userlist')}}">User List</a>
-    <br>
-    <a href="">Delete User</a>
 </body>
 </html>

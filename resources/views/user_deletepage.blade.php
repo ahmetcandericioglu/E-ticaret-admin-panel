@@ -10,6 +10,8 @@
 <body>
 <header>
     <a href="{{route('home')}}">Home</a>
+    <a href="{{route('user')}}">User</a>
+    <a href="{{route('category')}}">User</a>
 </header>
 @if($errors->any())
     @foreach($errors->all() as $error)
@@ -17,15 +19,11 @@
     @endforeach
 @endif
 <div>
-    <form action="{{route('delete_user', ['user' => $user])}}" method="post">
+    <form action="{{route('delete_user', ['user' => $user])}}" method="post" onsubmit="return confirm('Are you sure?')">
         @csrf
         <h1>Edit User</h1>
-        <p>User Name:</p>
-        <input type="text" name="username_edit" id="" value="{{$user->username}}">
-        <p>User Title:</p>
-        <input type="text" name="usertitle_edit" id="" value="{{$user->usertitle}}">
-        <br>
-        <br>
+        <p>User Name: {{$user->username}}</p>
+        <p>User Title: {{$user->usertitle}}</p>
         <button type="submit">Delete</button>
     </form>
 </div>
