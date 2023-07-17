@@ -79,7 +79,6 @@ class UserController extends Controller
 
         $request->validate([
             "username_edit" => 'required|alpha:ascii',
-            "password_edit" => 'min:6',
             "usertitle_edit" => 'required',
         ]);
 
@@ -94,6 +93,9 @@ class UserController extends Controller
         $passwordChange = false;
         if (!($request->password_edit == "")) {
             $passwordChange = true;
+            $request->validate([
+                "password_edit" => 'min:6',
+            ]);
         }
         if ($passwordChange) {
             $user->usertitle = $request->usertitle_edit;
