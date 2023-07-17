@@ -8,8 +8,26 @@
     <title>E-ticaret-delete</title>
 </head>
 <body>
+<header>
+    <a href="{{route('home')}}">Home</a>
+</header>
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
+@endif
 <div>
-    <h1>{{$user->username}}</h1>
+    <form action="{{route('delete_user', ['user' => $user])}}" method="post">
+        @csrf
+        <h1>Edit User</h1>
+        <p>User Name:</p>
+        <input type="text" name="username_edit" id="" value="{{$user->username}}">
+        <p>User Title:</p>
+        <input type="text" name="usertitle_edit" id="" value="{{$user->usertitle}}">
+        <br>
+        <br>
+        <button type="submit">Delete</button>
+    </form>
 </div>
 </body>
 </html>

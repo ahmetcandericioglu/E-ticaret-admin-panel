@@ -113,4 +113,9 @@ class UserController extends Controller
         return view('user_editpage', ['user' => $user]);
 
     }
+
+    public function deleteUser(User $user){
+        $user->delete();
+        return redirect()->route('userlist');
+    }
 }

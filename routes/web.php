@@ -26,4 +26,5 @@ Route::get('/userlist', [UserController::class, 'toUserList'])->name('userlist')
 Route::get('/edit/{user}', [UserController::class, 'toUpdateUser'])->name('edit');
 Route::post('/edit/{user}', [UserController::class, 'toUpdateUser'])->name('edit');
 Route::get('/delete/{user}', [UserController::class, 'toDeleteUser'])->name('delete');
+Route::post('/delete-user/{user}', [UserController::class, 'deleteUser'])->name('delete_user');
 Route::post('/edit-user/{user}', [UserController::class, 'editUser'])->name('edit_user');
