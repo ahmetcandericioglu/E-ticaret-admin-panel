@@ -8,6 +8,9 @@
     <title>E-ticaret-userlist</title>
 </head>
 <body>
+<header>
+    <a href="{{route('home')}}">Home</a>
+</header>
 <div>
     <h1>Users</h1>
     <div>
