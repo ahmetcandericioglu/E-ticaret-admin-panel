@@ -14,7 +14,7 @@
         <table>
             <thead>
             <tr>
-                <th>Seç</th>
+                <th>Choose</th>
                 <th>User Title</th>
                 <th>User Name</th>
                 <th>Password</th>
@@ -29,7 +29,7 @@
                     <td>{{$user->usertitle}}</td>
                     <td>{{$user->username}}</td>
                     <td>{{$user->password}}</td>
-                    <td><a href="">düzenle</a></td>
+                    <td><a href="{{route('edit',['user'=>$user])}}">düzenle</a></td>
                     <td><a href="">sil</a></td>
                 </tr>
             @endforeach

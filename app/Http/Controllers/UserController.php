@@ -56,6 +56,10 @@ class UserController extends Controller
 
     public function toUserList(){
         $users = User::all();
-        return view('listpage', ["users" => $users]);
+        return view('user_listpage', ["users" => $users]);
+    }
+
+    public function toUpdateUser(User $user){
+        return view('user_editpage', ['user' => $user]);
     }
 }
