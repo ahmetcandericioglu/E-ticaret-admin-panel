@@ -53,4 +53,17 @@ class UserController extends Controller
 
         return view('user_registerpage');
     }
+
+    public function toUserList(){
+        $users = User::all();
+        return view('user_listpage', ["users" => $users]);
+    }
+
+    public function toUpdateUser(User $user){
+        return view('user_editpage', ['user' => $user]);
+    }
+
+    public function toDeleteUser(user $user){
+        return view('user_deletepage', ['user' => $user]);
+    }
 }
