@@ -21,6 +21,9 @@ Route::get('/home', function () {
 Route::get('/category', function () {
     return view('categorypage');
 })->name('category');
+Route::get('/product', function () {
+    return view('productpage');
+})->name('product');
 
 Route::post('/home', [UserController::class, 'loginControl'])->name('login');
 Route::get('/user', [UserController::class, 'toUser'])->name('user');
@@ -43,3 +46,5 @@ Route::post('/category/edit-category/{category}',[CategoryController::class, 'ed
 Route::get('/category/delete-category/{category}',[CategoryController::class, 'toDeleteCategory'])->name('delete_category');
 Route::post('/category/delete-category/{category}',[CategoryController::class, 'deleteCategory'])->name('delete_category');
 Route::post('/category/delete-categories',[CategoryController::class, 'deleteCategories'])->name('delete_categories');
+
+

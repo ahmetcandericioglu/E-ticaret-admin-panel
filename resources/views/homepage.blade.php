@@ -12,10 +12,13 @@
     <a href="{{route('home')}}">Home</a>
     <a href="{{route('user')}}">User</a>
     <a href="{{route('category')}}">Category</a>
+    <a href="{{route('product')}}">Product</a>
 </header>
 <h1>Home</h1>
 <a href="{{route('user')}}">User</a>
 <br>
 <a href="{{route('category')}}">Category</a>
+<br>
+<a href="{{route('product')}}">Product</a>
 </body>
 </html>
