@@ -15,7 +15,7 @@
     <a href="{{route('product')}}">Product</a>
 </header>
 <h1>Product</h1>
-<a href="{{route('product')}}">New Product</a>
+<a href="{{route('add_product')}}">New Product</a>
 <br>
 <a href="{{route('product')}}">Product List</a>
 

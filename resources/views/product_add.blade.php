@@ -20,15 +20,22 @@
         <li>{{$error}}</li>
     @endforeach
 @endif
-<h1>Category</h1>
-<form action="{{route('add_new_category')}}" method="post">
+<h1>Product</h1>
+<form action="{{route('add_new_product')}}" method="post">
     @csrf
-    <p>Category Title:</p>
-    <input type="text" name="categorytitle" id="">
-    <p>Category Description:</p>
-    <input type="text" name="categorydescription" id="">
-    <p>Category Status:</p>
-    <input type="text" name="categorystatus" id="">
+    <p>Product Title:</p>
+    <input type="text" name="producttitle" id="">
+    <p>Product Category Id:</p>
+    <select name="productcategoryid" id="products">
+        <option value="{{null}}" selected>Null</option>
+        @foreach($categories as $category)
+            <option value="{{$category->id}}">{{$category->id}}</option>
+        @endforeach
+    </select>
+    <p>Barcode:</p>
+    <input type="text" name="barcode" id="">
+    <p>Product Status:</p>
+    <input type="text" name="productstatus" id="">
     <br>
     <br>
     <button type="submit">Add</button>
