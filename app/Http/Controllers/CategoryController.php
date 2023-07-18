@@ -29,4 +29,16 @@ class CategoryController extends Controller
 
         return redirect()->route('add_category');
     }
+
+    public function toCategoryList(){
+        $categories = Category::all();
+        return view('category_listpage', ["categories" => $categories]);
+    }
+
+    public function deleteCategories(Request $request){
+        $ids = $request->selectedids;
+        if (!($ids == null))
+            Category::whereIn('id', $ids)->delete();
+        return redirect()->route('list_category');
+    }
 }

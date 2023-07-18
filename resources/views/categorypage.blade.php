@@ -17,7 +17,7 @@
     <h1>Category</h1>
     <a href="{{route('add_category')}}">New Category</a>
     <br>
-    <a href="{{route('add_category')}}">Category List</a>
+    <a href="{{route('list_category')}}">Category List</a>
 </div>
 
 
