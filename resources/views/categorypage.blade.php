@@ -13,6 +13,13 @@
     <a href="{{route('user')}}">User</a>
     <a href="{{route('category')}}">Category</a>
 </header>
+<div>
     <h1>Category</h1>
+    <a href="{{route('add_category')}}">New Category</a>
+    <br>
+    <a href="{{route('add_category')}}">Category List</a>
+</div>
+
+
 </body>
 </html>

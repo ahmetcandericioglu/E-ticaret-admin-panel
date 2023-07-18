@@ -15,5 +15,7 @@
 </header>
 <h1>Home</h1>
 <a href="{{route('user')}}">User</a>
+<br>
+<a href="{{route('category')}}">Category</a>
 </body>
 </html>
