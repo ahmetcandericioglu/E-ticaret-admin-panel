@@ -14,6 +14,9 @@ class CategoryController extends Controller
     public function toAddCategory(){
         return view('category_add');
     }
+    public function toEditCategory(Category $category){
+        return view('category_editpage', ['category' => $category]);
+    }
     public function addCategory(Request $request){
         $request->validate([
             'categorytitle' => 'required|unique:category',
