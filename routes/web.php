@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,4 +48,6 @@ Route::get('/category/delete-category/{category}',[CategoryController::class, 't
 Route::post('/category/delete-category/{category}',[CategoryController::class, 'deleteCategory'])->name('delete_category');
 Route::post('/category/delete-categories',[CategoryController::class, 'deleteCategories'])->name('delete_categories');
 
+
+Route::get('/product/add-product',[ProductController::class, 'toAddProduct'])->name('add_product');
 
