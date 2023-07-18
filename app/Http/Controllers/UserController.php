@@ -78,16 +78,16 @@ class UserController extends Controller
     {
 
         $request->validate([
-            "username_edit" => 'required|alpha:ascii',
+            "username" => 'required|alpha:ascii',
             "usertitle_edit" => 'required',
         ]);
 
-        if (!($request->username_edit == $user->username)) {
-            $duplicate = User::where('username', '=', $request->username_edit)->first();
-            if ($request->username_edit)
+        if (!($request->username == $user->username)) {
+            $duplicate = User::where('username', '=', $request->username)->first();
+            if ($request->username)
                 if (!($duplicate == "")) {
                     $request->validate([
-                        "username_edit" => "unique:users",
+                        "username" => "unique:users",
                     ]);
                 }
         }
@@ -100,13 +100,13 @@ class UserController extends Controller
         }
         if ($passwordChange) {
             $user->usertitle = $request->usertitle_edit;
-            $user->username = $request->username_edit;
+            $user->username = $request->username;
             $user->password = $request->password_edit;
             $user->save();
 
         } else {
             $user->usertitle = $request->usertitle_edit;
-            $user->username = $request->username_edit;
+            $user->username = $request->username;
             $user->save();
         }
 

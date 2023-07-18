@@ -44,4 +44,31 @@ class CategoryController extends Controller
             Category::whereIn('id', $ids)->delete();
         return redirect()->route('list_category');
     }
+
+    public function editCategory(Request $request, Category $category){
+        $request->validate([
+            "categorytitle" => "required",
+            "categorydescription_edit" => "required",
+            "categorystatus_edit" => "required",
+        ]);
+
+        if (!($request->categorytitle == $category->categorytitle)) {
+            $duplicate = Category::where('categorytitle', '=', $request->categorytitle)->first();
+            if ($request->categorytitle)
+                if (!($duplicate == "")) {
+                    $request->validate([
+                        "categorytitle" => "unique:category",
+                    ]);
+                }
+        }
+            $category->categorytitle = $request->categorytitle;
+            $category->categorydescription = $request->categorydescription_edit;
+            $category->categorystatus = $request->categorystatus_edit;
+            $category->save();
+
+        return view('category_editpage', ['category' => $category]);
+
+
+
+    }
 }

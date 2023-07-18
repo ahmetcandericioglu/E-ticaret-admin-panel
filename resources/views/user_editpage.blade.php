@@ -23,7 +23,7 @@
         @csrf
         <h1>Edit User</h1>
         <p>User Name:</p>
-        <input type="text" name="username_edit" id="" value="{{$user->username}}">
+        <input type="text" name="username" id="" value="{{$user->username}}">
         <p>User Title:</p>
         <input type="text" name="usertitle_edit" id="" value="{{$user->usertitle}}">
         <p>Password:</p>

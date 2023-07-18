@@ -23,7 +23,7 @@
         @csrf
         <h1>Edit Category</h1>
         <p>Category Title:</p>
-        <input type="text" name="categorytitle_edit" id="" value="{{$category->categorytitle}}">
+        <input type="text" name="categorytitle" id="" value="{{$category->categorytitle}}">
         <p>Category Description:</p>
         <input type="text" name="categorydescription_edit" id="" value="{{$category->categorydescription}}">
         <p>Category Status:</p>
