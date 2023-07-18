@@ -13,14 +13,17 @@
     <a href="{{route('user')}}">User</a>
     <a href="{{route('category')}}">Category</a>
 </header>
+
 <div>
-    <form action="{{route('delete_user', ['user' => $user])}}" method="post" onsubmit="return confirm('Are you sure?')">
+    <form action="{{route('delete_category', ['category' => $category])}}" method="post" onsubmit="return confirm('Are you sure?')">
         @csrf
-        <h1>Edit User</h1>
-        <p>User Name: {{$user->username}}</p>
-        <p>User Title: {{$user->usertitle}}</p>
+        <h1>Delete Category</h1>
+        <p>Category Title: {{$category->categorytitle}}</p>
+        <p>Category Description: {{$category->categorydescription}}</p>
+        <p>Category Status: {{$category->categorystatus}}</p>
         <button type="submit">Delete</button>
     </form>
 </div>
+
 </body>
 </html>

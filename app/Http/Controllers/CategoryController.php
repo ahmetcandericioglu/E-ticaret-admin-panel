@@ -30,7 +30,7 @@ class CategoryController extends Controller
            'categorystatus' => $request->categorystatus,
         ]);
 
-        return redirect()->route('add_category');
+        return redirect()->route('list_category');
     }
 
     public function toCategoryList(){
@@ -66,9 +66,16 @@ class CategoryController extends Controller
             $category->categorystatus = $request->categorystatus_edit;
             $category->save();
 
-        return view('category_editpage', ['category' => $category]);
-
-
-
+        return redirect()->route('list_category');
     }
+
+    public function toDeleteCategory(Category $category){
+        return view('category_deletepage', ['category' => $category]);
+    }
+
+    public function deleteCategory(Category $category){
+        $category->delete();
+        return redirect()->route('list_category');
+    }
+
 }

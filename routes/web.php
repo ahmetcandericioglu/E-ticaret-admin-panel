@@ -40,5 +40,6 @@ Route::post('/category/add-category',[CategoryController::class, 'addCategory'])
 Route::get('/category/list-category',[CategoryController::class, 'toCategoryList'])->name('list_category');
 Route::get('/category/edit-category/{category}',[CategoryController::class, 'toEditCategory'])->name('edit_category');
 Route::post('/category/edit-category/{category}',[CategoryController::class, 'editCategory'])->name('edit_category');
-Route::post('/category/delete-category',[CategoryController::class, 'deleteCategory'])->name('delete_category');
+Route::get('/category/delete-category/{category}',[CategoryController::class, 'toDeleteCategory'])->name('delete_category');
+Route::post('/category/delete-category/{category}',[CategoryController::class, 'deleteCategory'])->name('delete_category');
 Route::post('/category/delete-categories',[CategoryController::class, 'deleteCategories'])->name('delete_categories');
