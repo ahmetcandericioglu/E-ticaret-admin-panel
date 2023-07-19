@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -74,6 +75,11 @@ class CategoryController extends Controller
     }
 
     public function deleteCategory(Category $category){
+
+        $categoryProducts = Product::where("productcategoryid", "=", $category->id)->first();
+
+        $categoryProducts->productcategoryid = null;
+        $categoryProducts->save();
         $category->delete();
         return redirect()->route('list_category');
     }
