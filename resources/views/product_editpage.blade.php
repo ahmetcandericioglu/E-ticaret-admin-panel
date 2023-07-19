@@ -20,15 +20,23 @@
     @endforeach
 @endif
 <div>
-    <form action="{{route('edit_category', ['category' => $category])}}" method="post">
+    <form action="{{route('edit_product', ['product' => $product])}}" method="post">
         @csrf
-        <h1>Edit Category</h1>
-        <p>Category Title:</p>
-        <input type="text" name="categorytitle" id="" value="{{$category->categorytitle}}">
-        <p>Category Description:</p>
-        <input type="text" name="categorydescription_edit" id="" value="{{$category->categorydescription}}">
-        <p>Category Status:</p>
-        <input type="text" name="categorystatus_edit" id="" value="{{$category->categorystatus}}">
+        <h1>Edit Product</h1>
+        <p>Product Title:</p>
+        <input type="text" name="producttitle" id="" value="{{$product->producttitle}}">
+        <p>Product Category Id:</p>
+        <select name="productcategoryid">
+            <option value="{{null}}" selected>Null</option>
+            @foreach($categories as $category)
+                <option>{{$category->id." -> ". $category->categorytitle}}</option>
+            @endforeach
+        </select>
+
+        <p>Barcode:</p>
+        <input type="text" name="barcode_edit" id="" value="{{$product->barcode}}">
+        <p>Product Status:</p>
+        <input type="text" name="productstatus_edit" id="" value="{{$product->productstatus}}">
         <br>
         <br>
         <button type="submit">Edit</button>

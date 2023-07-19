@@ -29,7 +29,7 @@
     <select name="productcategoryid" id="products">
         <option value="{{null}}" selected>Null</option>
         @foreach($categories as $category)
-            <option value="{{$category->id}}">{{$category->id}}</option>
+            <option value="{{$category->id}}">{{$category->id." -> ".$category->categorytitle}}</option>
         @endforeach
     </select>
     <p>Barcode:</p>
