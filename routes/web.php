@@ -52,4 +52,9 @@ Route::post('/category/delete-categories',[CategoryController::class, 'deleteCat
 Route::get('/product/add-product',[ProductController::class, 'toAddProduct'])->name('add_product');
 Route::post('/product/add-product',[ProductController::class, 'addProduct'])->name('add_new_product');
 Route::get('/product/list-product',[ProductController::class, 'toProductList'])->name('list_product');
+Route::get('/product/edit-product/{product}',[ProductController::class, 'toEditProduct'])->name('edit_product');
+Route::post('/product/edit-product/{product}',[ProductController::class, 'editProduct'])->name('edit_product');
+Route::get('/product/delete-product/{product}',[ProductController::class, 'toDeleteProduct'])->name('delete_product');
+Route::post('/product/delete-product/{product}',[ProductController::class, 'deleteProduct'])->name('delete_product');
+Route::post('/product/delete-products',[ProductController::class, 'deleteProducts'])->name('delete_products');
 

@@ -8,25 +8,29 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         return view('productpage');
     }
 
-    public function toAddProduct(){
+    public function toAddProduct()
+    {
 
         $categories = Category::all();
         return view('product_add', ["categories" => $categories]);
 
     }
 
-    public function toProductList(){
+    public function toProductList()
+    {
 
         $categories = Category::all();
         return view('product_listpage');
 
     }
 
-    public function addProduct(Request $request){
+    public function addProduct(Request $request)
+    {
         $request->validate([
             "producttitle" => "required",
             "barcode" => "required",
@@ -34,13 +38,17 @@ class ProductController extends Controller
         ]);
 
         Product::create([
-           "producttitle"  => $request->producttitle,
-           "productcategoryid"  => $request->productcategoryid,
-           "barcode"  => $request->barcode,
-           "productstatus"  => $request->productstatus
+            "producttitle" => $request->producttitle,
+            "productcategoryid" => $request->productcategoryid,
+            "barcode" => $request->barcode,
+            "productstatus" => $request->productstatus
         ]);
 
         return redirect()->route('list_product');
+    }
+
+    public function toEditProduct(Request $request, Product $product)
+    {
 
     }
 }
