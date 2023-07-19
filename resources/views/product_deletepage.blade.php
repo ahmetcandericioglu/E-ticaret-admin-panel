@@ -16,12 +16,13 @@
 </header>
 
 <div>
-    <form action="{{route('delete_category', ['category' => $category])}}" method="post" onsubmit="return confirm('Are you sure?')">
+    <form action="{{route('delete_product', ['product' => $product])}}" method="post" onsubmit="return confirm('Are you sure?')">
         @csrf
-        <h1>Delete Category</h1>
-        <p>Category Title: {{$category->categorytitle}}</p>
-        <p>Category Description: {{$category->categorydescription}}</p>
-        <p>Category Status: {{$category->categorystatus}}</p>
+        <h1>Delete Product</h1>
+        <p>Product Title: {{$product->producttitle}}</p>
+        <p>Product Category Id: {{$product->productcategoryid}}</p>
+        <p>Barcode: {{$product->barcode}}</p>
+        <p>Product Status: {{$product->productstatus}}</p>
         <button type="submit">Delete</button>
     </form>
 </div>

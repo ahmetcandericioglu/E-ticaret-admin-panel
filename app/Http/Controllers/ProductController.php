@@ -49,10 +49,11 @@ class ProductController extends Controller
     public function toEditProduct(Product $product)
     {
         $categories = Category::all();
-        return view('product_editpage', ['categories' => $categories ,'product' => $product]);
+        return view('product_editpage', ['categories' => $categories, 'product' => $product]);
     }
 
-    public function editProduct(Request $request, Product $product){
+    public function editProduct(Request $request, Product $product)
+    {
         $request->validate([
             "producttitle" => "required",
             "barcode_edit" => "required",
@@ -68,10 +69,21 @@ class ProductController extends Controller
         return redirect()->route('list_product');
     }
 
-    public function deleteProducts(Request $request, ){
+    public function deleteProducts(Request $request,)
+    {
         $ids = $request->selectedids;
         if (!($ids == null))
             Product::whereIn('id', $ids)->delete();
+        return redirect()->route('list_product');
+    }
+
+    public function toDeleteProduct(Product $product)
+    {
+        return view('product_deletepage', ['product' => $product]);
+    }
+
+    public function deleteProduct(Product $product){
+        $product->delete();
         return redirect()->route('list_product');
     }
 
