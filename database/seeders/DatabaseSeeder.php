@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < 10; $i++){
             User::create([
-               "username" => $faker->name(),
+               "username" => $faker->unique()->userName(),
                "usertitle" => $faker->title(),
                "password" => Hash::make("123123"),
             ]);
