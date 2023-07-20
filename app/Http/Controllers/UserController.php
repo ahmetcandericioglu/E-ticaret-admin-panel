@@ -21,8 +21,8 @@ class UserController extends Controller
         ]);
 
         $user = User::where('username', '=', $request->username)->first();
-        if ($user) {
-            if ($user->password != $request->password) {
+        if ($user){
+            if (!(Hash::check($request->password, $user->password))){
                 echo 'Wrong password';
                 return;
             }
