@@ -25,7 +25,6 @@
                     <th>Choose</th>
                     <th>User Title</th>
                     <th>User Name</th>
-                    <th>Password</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -36,7 +35,6 @@
                         <td><input type="checkbox" name="selectedids[{{$user->id}}]" id="" value="{{$user->id}}"></td>
                         <td>{{$user->usertitle}}</td>
                         <td>{{$user->username}}</td>
-                        <td>{{$user->password}}</td>
                         <td><a href="{{route('edit',['user' => $user])}}">düzenle</a></td>
                         <td><a href="{{route('delete',['user' => $user])}}">sil</a></td>
                     </tr>
