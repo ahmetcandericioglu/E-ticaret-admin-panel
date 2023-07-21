@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E-ticaret-delete</title>
+    <title>E-ticaret-admin</title>
 </head>
 <body>
 <header>
@@ -14,14 +14,9 @@
     <a href="{{route('category')}}">Category</a>
     <a href="{{route('product')}}">Product</a>
 </header>
-<div>
-    <form action="{{route('delete_user', ['user' => $user])}}" method="post" onsubmit="return confirm('Are you sure?')">
-        @csrf
-        <h1>Edit User</h1>
-        <p>User Name: {{$user->username}}</p>
-        <p>User Title: {{$user->usertitle}}</p>
-        <button type="submit">Delete</button>
-    </form>
-</div>
+<section>
+    @yield('title')
+    @yield('content')
+</section>
 </body>
 </html>

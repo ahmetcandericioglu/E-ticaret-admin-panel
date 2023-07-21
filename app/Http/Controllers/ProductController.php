@@ -10,21 +10,21 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return view('productpage');
+        return view('product/productpage');
     }
 
     public function toAddProduct()
     {
 
         $categories = Category::all();
-        return view('product_add', ["categories" => $categories]);
+        return view('product/product_add', ["categories" => $categories]);
 
     }
 
     public function toProductList()
     {
         $products = Product::all();
-        return view('product_listpage', ['products' => $products]);
+        return view('product/product_listpage', ['products' => $products]);
 
     }
 
@@ -49,7 +49,7 @@ class ProductController extends Controller
     public function toEditProduct(Product $product)
     {
         $categories = Category::all();
-        return view('product_editpage', ['categories' => $categories, 'product' => $product]);
+        return view('product/product_editpage', ['categories' => $categories, 'product' => $product]);
     }
 
     public function editProduct(Request $request, Product $product)
@@ -79,7 +79,7 @@ class ProductController extends Controller
 
     public function toDeleteProduct(Product $product)
     {
-        return view('product_deletepage', ['product' => $product]);
+        return view('product/product_deletepage', ['product' => $product]);
     }
 
     public function deleteProduct(Product $product){

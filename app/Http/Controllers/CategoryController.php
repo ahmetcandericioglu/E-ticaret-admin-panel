@@ -9,14 +9,14 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){
-        return view('categorypage');
+        return view('category/categorypage');
     }
 
     public function toAddCategory(){
-        return view('category_add');
+        return view('category/category_add');
     }
     public function toEditCategory(Category $category){
-        return view('category_editpage', ['category' => $category]);
+        return view('category/category_editpage', ['category' => $category]);
     }
     public function addCategory(Request $request){
         $request->validate([
@@ -36,7 +36,7 @@ class CategoryController extends Controller
 
     public function toCategoryList(){
         $categories = Category::all();
-        return view('category_listpage', ["categories" => $categories]);
+        return view('category/category_listpage', ["categories" => $categories]);
     }
 
     public function deleteCategories(Request $request){
@@ -71,7 +71,7 @@ class CategoryController extends Controller
     }
 
     public function toDeleteCategory(Category $category){
-        return view('category_deletepage', ['category' => $category]);
+        return view('category/category_deletepage', ['category' => $category]);
     }
 
     public function deleteCategory(Category $category){

@@ -35,12 +35,12 @@ class UserController extends Controller
 
     public function toUser()
     {
-        return view('userpage');
+        return view('user/userpage');
     }
 
     public function toRegister()
     {
-        return view('user_registerpage');
+        return view('user/user_registerpage');
     }
 
     public function registerControl(Request $request)
@@ -63,17 +63,17 @@ class UserController extends Controller
     public function toUserList()
     {
         $users = User::all();
-        return view('user_listpage', ["users" => $users]);
+        return view('user/user_listpage', ["users" => $users]);
     }
 
     public function toUpdateUser(User $user)
     {
-        return view('user_editpage', ['user' => $user]);
+        return view('user/user_editpage', ['user' => $user]);
     }
 
     public function toDeleteUser(User $user)
     {
-        return view('user_deletepage', ['user' => $user]);
+        return view('user/user_deletepage', ['user' => $user]);
     }
 
     public function editUser(Request $request, User $user)
@@ -113,7 +113,7 @@ class UserController extends Controller
         }
 
 
-        return view('user_editpage', ['user' => $user]);
+        return view('user/user_editpage', ['user' => $user]);
 
     }
 
