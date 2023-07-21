@@ -20,10 +20,10 @@ Route::get('/home', function () {
     return view('homepage');
 })->name('home');
 Route::get('/category', function () {
-    return view('categorypage');
+    return view('category/categorypage');
 })->name('category');
 Route::get('/product', function () {
-    return view('productpage');
+    return view('product/productpage');
 })->name('product');
 
 Route::post('/home', [UserController::class, 'loginControl'])->name('login');
