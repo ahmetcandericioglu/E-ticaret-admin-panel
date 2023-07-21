@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 class UserSeeder extends Seeder
 {
@@ -14,18 +15,11 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+
         User::create([
-                [
-                    'username' => 'muratAydın',
-                    'usertitle' => 'admin',
-                    'password' => Hash::make('123456'),
-                ],
-                [
-                    'username' => 'ahmet',
-                    'usertitle' => 'admin',
-                    'password' => Hash::make('123456'),
-                ]
-            ]
-        );
+                'usertitle' => 'admin',
+                'username' => 'muratAydın',
+                'password' => Hash::make('123456'),
+            ]);
     }
 }
