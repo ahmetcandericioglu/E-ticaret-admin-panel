@@ -1,4 +1,7 @@
-@extends('layout.productLayout')
+@extends('layout.master')
+@section('header')
+    Product
+@endsection
 @section('content')
     <a href="{{route('add_product')}}">New Product</a>
     <br>

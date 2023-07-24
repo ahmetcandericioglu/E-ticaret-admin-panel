@@ -1,6 +1,8 @@
-@extends('layout.productLayout')
+@extends('layout.master')
+@section('header')
+    Product List
+@endsection
 @section('content')
-    <h3>Product List</h3>
     <form action="{{route('delete_products')}}" method="post" onsubmit=" return confirm('Are You Sure?')">
         @csrf
         <div>

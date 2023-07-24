@@ -1,4 +1,7 @@
-@extends('layout.userLayout')
+@extends('layout.master')
+@section('header')
+    User
+@endsection
 @section('content')
     <a href="{{route('register')}}">New User</a>
     <br>

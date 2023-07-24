@@ -1,6 +1,8 @@
-@extends('layout.userLayout')
+@extends('layout.master')
+@section('header')
+    User Delete
+@endsection
 @section('content')
-    <h3>User Delete</h3>
     <form action="{{route('delete_user', ['user' => $user])}}" method="post" onsubmit="return confirm('Are you sure?')">
         @csrf
         <p>User Name: {{$user->username}}</p>

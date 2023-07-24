@@ -1,6 +1,8 @@
-@extends('layout.categoryLayout')
+@extends('layout.master')
+@section('header')
+    Category Edit
+@endsection
 @section('content')
-    <h3>Category Edit</h3>
     @if($errors->any())
         @foreach($errors->all() as $error)
             <li>{{ $error }}</li>

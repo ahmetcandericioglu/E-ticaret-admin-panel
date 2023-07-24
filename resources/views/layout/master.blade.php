@@ -15,7 +15,8 @@
     <a href="{{route('product')}}">Product</a>
 </header>
 <section>
-    @yield('title')
+    <h1>@yield('header')</h1>
+
     @yield('content')
 </section>
 </body>
