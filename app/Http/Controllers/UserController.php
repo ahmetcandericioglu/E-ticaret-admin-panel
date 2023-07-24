@@ -16,19 +16,20 @@ class UserController extends Controller
     public function loginControl(Request $request)
     {
         $request->validate([
-            'username'=> 'required',
+            'username'=> 'required|exists:users',
             'password'=> 'required',
         ]);
 
         $user = User::where('username', '=', $request->username)->first();
         if ($user){
             if (!(Hash::check($request->password, $user->password))){
-                echo 'Wrong password';
-                return;
+                $request->validate([
+                   'password' => 'current_password',
+                ]);
+                redirect()->route("login");
             }
             return view('homepage');
         }
-        echo "There is no user with name '". $request->username . "'";
-        return;
+        return view('loginpage');
     }
 }
