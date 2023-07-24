@@ -1,6 +1,11 @@
-@extends('layout.userLayout')
+@extends('layout.master')
+
+@section('header')
+    User Add
+@endsection
+
 @section('content')
-    <h3>User Add</h3>
+
     @if($errors->any())
         @foreach($errors->all() as $error)
             <li>{{$error}}</li>

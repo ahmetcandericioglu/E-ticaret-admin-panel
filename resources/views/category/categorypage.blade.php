@@ -1,4 +1,7 @@
-@extends('layout.categoryLayout')
+@extends('layout.master')
+@section('header')
+    Category
+@endsection
 @section('content')
     <a href="{{route('add_category')}}">New Category</a>
     <br>

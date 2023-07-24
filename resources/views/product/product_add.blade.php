@@ -1,6 +1,8 @@
-@extends('layout.productLayout')
+@extends('layout.master')
+@section('header')
+    Product Add
+@endsection
 @section('content')
-    <h3>Product Add</h3>
     @if($errors->any())
         @foreach($errors->all() as $error)
             <li>{{$error}}</li>

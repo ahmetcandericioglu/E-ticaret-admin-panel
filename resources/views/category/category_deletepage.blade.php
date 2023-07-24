@@ -1,6 +1,8 @@
-@extends('layout.categoryLayout')
+@extends('layout.master')
+@section('header')
+    User Delete
+@endsection
 @section('content')
-    <h3>Category Delete</h3>
     <form action="{{route('delete_category', ['category' => $category])}}" method="post" onsubmit="return confirm('Are you sure?')">
         @csrf
         <p>Category Title: {{$category->categorytitle}}</p>

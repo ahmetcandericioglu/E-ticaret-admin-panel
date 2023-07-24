@@ -1,7 +1,9 @@
-@extends('layout.userLayout')
+@extends('layout.master')
+@section('header')
+    User List
+@endsection
 @section('content')
-    <h3>User List</h3>
-    <form action="{{route('delete_users')}}" method="post" onsubmit=" return confirm('Are You Sure?') " >
+    <form action="{{route('delete_users')}}" method="post" onsubmit=" return confirm('Are You Sure?') ">
         @csrf
         <div>
             <table>

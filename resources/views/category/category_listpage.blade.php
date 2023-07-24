@@ -1,6 +1,8 @@
-@extends('layout.categoryLayout')
+@extends('layout.master')
+@section('header')
+    Category List
+@endsection
 @section('content')
-    <h3>Category List</h3>
     <form action="{{route('delete_categories')}}" method="post" onsubmit=" return confirm('Are You Sure?') " >
         @csrf
         <div>
