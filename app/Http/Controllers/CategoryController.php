@@ -76,10 +76,11 @@ class CategoryController extends Controller
 
     public function deleteCategory(Category $category){
 
-        $categoryProducts = Product::where("productcategoryid", "=", $category->id)->first();
-
-        $categoryProducts->productcategoryid = null;
-        $categoryProducts->save();
+        $categoryProducts = Product::where("productcategoryid", $category->id)->get() ;
+        foreach ($categoryProducts as $product){
+            $product->productcategoryid = null;
+            $product->save();
+        }
         $category->delete();
         return redirect()->route('list_category');
     }
