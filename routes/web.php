@@ -13,6 +13,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [UserController::class, 'index']);
+Route::get('/', [UserController::class, 'index'])->name('loginpage');
 Route::post('/home', [UserController::class, 'loginControl'])->name('login');
-Route::get('/home', [UserController::class, 'loginControl'])->name('login');
+Route::middleware('authen')->get('/home', function () {
+    return view('homepage');
+})->name('home');

@@ -8,6 +8,6 @@
     <title>admin</title>
 </head>
 <body>
-<h1>Home</h1>
+Home
 </body>
 </html>

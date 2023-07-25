@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -22,12 +23,13 @@ class UserController extends Controller
 
         $user = User::where('username', '=', $request->username)->first();
         if ($user){
-            if (!(Hash::check($request->password, $user->password))){
+            if (!(Hash::check($request->password, $user->password))) {
                 $request->validate([
-                   'password' => 'current_password',
+                    'password' => 'current_password',
                 ]);
                 redirect()->route("login");
             }
+            Auth::login($user);
             return view('homepage');
         }
         return view('loginpage');
