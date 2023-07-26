@@ -14,27 +14,6 @@ class UserController extends Controller
         return view('loginpage');
     }
 
-    public function loginControl(Request $request)
-    {
-        $request->validate([
-            'username'=> 'required|exists:users',
-            'password'=> 'required',
-        ]);
-
-        $user = User::where('username', '=', $request->username)->first();
-        if ($user){
-            if (!(Hash::check($request->password, $user->password))) {
-                $request->validate([
-                    'password' => 'current_password',
-                ]);
-                redirect()->route("login");
-            }
-            Auth::login($user);
-            return view('homepage');
-        }
-        return view('loginpage');
-    }
-
     public function toUser()
     {
         return view('user/userpage');

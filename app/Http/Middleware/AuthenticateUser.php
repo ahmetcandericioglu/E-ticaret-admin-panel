@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +17,9 @@ class AuthenticateUser
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check()){
+        if (Session::has('loginId')){
             return $next($request);
         }
-        return redirect()->route('loginpage');
+        return redirect()->route('login');
     }
 }
