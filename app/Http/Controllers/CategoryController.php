@@ -41,13 +41,14 @@ class CategoryController extends Controller
 
     public function deleteCategories(Request $request){
         $ids = $request->selectedids;
-        $categoryProducts = Product::query()->whereIn("productcategoryid", $ids)->get() ;
-        foreach ($categoryProducts as $product){
-            $product->productcategoryid = null;
-            $product->save();
-        }
-        if (!($ids == null))
+        if (!($ids == null)) {
+            $categoryProducts = Product::query()->whereIn("productcategoryid", $ids)->get();
+            foreach ($categoryProducts as $product) {
+                $product->productcategoryid = null;
+                $product->save();
+            }
             Category::whereIn('id', $ids)->delete();
+        }
         return redirect()->route('list_category');
     }
 
