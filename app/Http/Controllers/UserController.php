@@ -27,7 +27,7 @@ class UserController extends Controller
                 $request->validate([
                     'password' => 'current_password',
                 ]);
-                redirect()->route("login");
+                redirect()->route("home");
             }
             Auth::login($user);
             return view('homepage');
