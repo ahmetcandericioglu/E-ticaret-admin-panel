@@ -8,7 +8,7 @@ Login
             <li>{{ $error }}</li>
         @endforeach
     @endif
-    <form action="{{route('login.post')}}" method="post">
+    <form action="{{route('loginpost')}}" method="post">
         @csrf
         <p>User Name:</p>
         <input type="text" name="username" id="name">

@@ -10,22 +10,29 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
+    public function index()
+    {
+        return view('loginpage');
+    }
     public function loginControl(Request $request)
     {
         $request->validate([
-            'username'=> 'required|exists:users',
-            'password'=> 'required',
+            'username' => 'required|exists:users',
+            'password' => 'required',
         ]);
         $user = User::where('username', '=', $request->username)->first();
-        if ($user){
+        if ($user) {
             if (!(Hash::check($request->password, $user->password))) {
                 $request->validate([
                     'password' => 'current_password',
                 ]);
                 redirect()->route("login");
             }
-            $request->session()->put('loginId', $user->id);
-            return redirect()->route('home');
+            if (Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+                return redirect()->route('home');
+            }
+            //$request->session()->put('loginId', $user->id);
+
 
             /*$credentials = $request->validate([
                 'email' => ['required', 'email'],
@@ -45,12 +52,10 @@ class AuthController extends Controller
     }
 
 
-
     public function logout(Request $request)
     {
-        if (Session::has('loginId')){
-            Session::pull('loginId');
-            return redirect('/');
-        }
+        Auth::logout();
+        return redirect('/');
+
     }
 }
