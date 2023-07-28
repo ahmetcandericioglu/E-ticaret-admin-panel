@@ -13,6 +13,7 @@
     <a href="{{route('user')}}">User</a>
     <a href="{{route('category')}}">Category</a>
     <a href="{{route('product')}}">Product</a>
+    <a href={{route("logout")}}>Logout</a>
 </header>
 <section>
     <h1>@yield('header')</h1>

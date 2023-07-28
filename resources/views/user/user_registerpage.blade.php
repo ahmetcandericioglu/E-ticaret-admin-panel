@@ -21,6 +21,6 @@
         <input type="password" name="password">
         <br>
         <br>
-        <button type="submit">Register</button>
+        <button type="submit">Add</button>
     </form>
 @endsection
