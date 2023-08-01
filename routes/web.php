@@ -64,6 +64,7 @@ Route::group(['middleware' => 'auth'],function () {
     );
 });
 
+Route::get('/admin', function () { return view('layout.admin');});
 
 
 

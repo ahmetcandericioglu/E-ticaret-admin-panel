@@ -4,7 +4,6 @@
 @endsection
 
 @section('content')
-    <h1>{{Auth::user()->username}}</h1>
     <a href="{{route('user')}}">User</a>
     <br>
     <a href="{{route('category')}}">Category</a>
