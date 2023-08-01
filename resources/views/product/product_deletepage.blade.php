@@ -2,6 +2,8 @@
 @section('header')
     Product Delete
 @endsection
+@section('title')Product-Delete
+@endsection
 @section('content')
     <form action="{{route('delete_product.post', ['product' => $product])}}" method="post" onsubmit="return confirm('Are you sure?')">
         @csrf

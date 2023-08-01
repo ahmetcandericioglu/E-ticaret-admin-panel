@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>E-ticaret-admin</title>
+    <title>E-ticaret-@yield('title')</title>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -31,8 +31,8 @@
 <section class="p-5 ">
     <div class="d-flex justify-content-center">
         <div class="d-flex align-items-center flex-column p-5 card w-25 shadow-lg">
-            <h1 class="display-3 font-weight-normal">@yield('title')</h1>
-            <hr class="w-100 border-dark">
+            <h1 class="display-3 font-weight-normal ">@yield('title')</h1>
+            <hr class="w-100 ">
             @yield('content')
         </div>
     </div>

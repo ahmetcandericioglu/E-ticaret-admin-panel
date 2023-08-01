@@ -2,6 +2,8 @@
 @section('header')
     Category Edit
 @endsection
+@section('title')Category-Edit
+@endsection
 @section('content')
     @if($errors->any())
         @foreach($errors->all() as $error)

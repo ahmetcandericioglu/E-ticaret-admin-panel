@@ -1,6 +1,8 @@
 @extends('layout.master')
 @section('header')
-    User Delete
+    Category Delete
+@endsection
+@section('title')Category-Delete
 @endsection
 @section('content')
     <form action="{{route('delete_category.post', ['category' => $category])}}" method="post" onsubmit="return confirm('Are you sure?')">

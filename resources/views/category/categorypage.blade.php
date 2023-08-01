@@ -2,8 +2,10 @@
 @section('header')
     Category
 @endsection
+@section('title')Category
+@endsection
 @section('content')
-    <a href="{{route('add_category')}}">New Category</a>
+    <a class="btn btn-primary w-25 mr-4" href="{{route('add_category')}}">New Category</a>
     <br>
-    <a href="{{route('list_category')}}">Category List</a>
+    <a class="btn btn-primary w-25" href="{{route('list_category')}}">Category List</a>
 @endsection

@@ -2,6 +2,8 @@
 @section('header')
     Product Edit
 @endsection
+@section('title')Product-Edit
+@endsection
 @section('content')
     @if($errors->any())
         @foreach($errors->all() as $error)

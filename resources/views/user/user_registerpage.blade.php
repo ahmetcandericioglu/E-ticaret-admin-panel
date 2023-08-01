@@ -4,6 +4,9 @@
     User Add
 @endsection
 
+@section('title')User-Add
+@endsection
+
 @section('content')
 
     @if($errors->any())

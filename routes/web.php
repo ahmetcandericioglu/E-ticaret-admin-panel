@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,10 +22,12 @@ Route::post('/login-post', [AuthController::class, 'loginControl'])->name('login
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::group(['middleware' => 'auth'],function () {
-    Route::get('/home', function () {return view('homepage');})->name('home');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', function () {
+        return view('homepage');
+    })->name('home');
 
-    Route::group(['prefix' => '/user'],function () {
+    Route::group(['prefix' => '/user'], function () {
         Route::get('/', [UserController::class, 'toUser'])->name('user');
         Route::get('/add-user', [UserController::class, 'toRegister'])->name('register');
         Route::post('/add-user', [UserController::class, 'registerControl'])->name('register_user');
@@ -37,20 +40,19 @@ Route::group(['middleware' => 'auth'],function () {
         Route::post('/edit-user/{user}', [UserController::class, 'editUser'])->name('edit_user');
     }
     );
-    Route::group(['prefix' => '/category'],
-        function () {
-            Route::get('/', [CategoryController::class, 'index'] )->name('category');
-            Route::get('/add-category', [CategoryController::class, 'toAddCategory'])->name('add_category');
-            Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add_new_category');
-            Route::get('/list-category', [CategoryController::class, 'toCategoryList'])->name('list_category');
-            Route::get('/edit-category/{category}', [CategoryController::class, 'toEditCategory'])->name('edit_category');
-            Route::post('/edit-category/{category}', [CategoryController::class, 'editCategory'])->name('update_category');
-            Route::get('/delete-category/{category}', [CategoryController::class, 'toDeleteCategory'])->name('delete_category');
-            Route::post('/delete-category/{category}', [CategoryController::class, 'deleteCategory'])->name('delete_category.post');
-            Route::post('/delete-categories', [CategoryController::class, 'deleteCategories'])->name('delete_categories');
-        }
+    Route::group(['prefix' => '/category'], function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('category');
+        Route::get('/add-category', [CategoryController::class, 'toAddCategory'])->name('add_category');
+        Route::post('/add-category', [CategoryController::class, 'addCategory'])->name('add_new_category');
+        Route::get('/list-category', [CategoryController::class, 'toCategoryList'])->name('list_category');
+        Route::get('/edit-category/{category}', [CategoryController::class, 'toEditCategory'])->name('edit_category');
+        Route::post('/edit-category/{category}', [CategoryController::class, 'editCategory'])->name('update_category');
+        Route::get('/delete-category/{category}', [CategoryController::class, 'toDeleteCategory'])->name('delete_category');
+        Route::post('/delete-category/{category}', [CategoryController::class, 'deleteCategory'])->name('delete_category.post');
+        Route::post('/delete-categories', [CategoryController::class, 'deleteCategories'])->name('delete_categories');
+    }
     );
-    Route::group(['prefix' => '/product'],function () {
+    Route::group(['prefix' => '/product'], function () {
         Route::get('/', [ProductController::class, 'index'])->name('product');
         Route::get('/add-product', [ProductController::class, 'toAddProduct'])->name('add_product');
         Route::post('/add-product', [ProductController::class, 'addProduct'])->name('add_new_product');
@@ -64,7 +66,6 @@ Route::group(['middleware' => 'auth'],function () {
     );
 });
 
-Route::get('/admin', function () { return view('layout.admin');});
 
 
 

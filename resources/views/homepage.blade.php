@@ -1,12 +1,17 @@
 @extends('layout.master')
+
 @section('header')
     Home
 @endsection
 
+@section('title')Home
+@endsection
+
 @section('content')
-    <a href="{{route('user')}}">User</a>
+    <a class="btn btn-primary w-25 mr-4" href="{{route('user')}}">User</a>
     <br>
-    <a href="{{route('category')}}">Category</a>
+    <a class="btn btn-primary w-25 mr-4" href="{{route('category')}}">Category</a>
     <br>
-    <a href="{{route('product')}}">Product</a>
+    <a class="btn btn-primary w-25" href="{{route('product')}}">Product</a>
+    </div>
 @endsection
