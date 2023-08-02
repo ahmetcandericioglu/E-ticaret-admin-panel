@@ -2,8 +2,7 @@
 @section('header')
     Product List
 @endsection
-@section('title')
-    Product-List
+@section('title')Product-List
 @endsection
 @section('content')
     <form action="{{route('delete_products')}}" method="post" onsubmit=" return confirm('Are You Sure?')">

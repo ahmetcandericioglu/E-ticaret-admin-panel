@@ -3,8 +3,7 @@
     User List
 @endsection
 
-@section('title')
-    User-List
+@section('title')User-List
 @endsection
 @section('content')
     <form class="" action="{{route('delete_users')}}" method="post" onsubmit=" return confirm('Are You Sure?') ">

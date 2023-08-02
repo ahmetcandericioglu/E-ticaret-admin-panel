@@ -2,8 +2,7 @@
 @section('header')
     Category List
 @endsection
-@section('title')
-    Category-List
+@section('title')Category-List
 @endsection
 @section('content')
     <form action="{{route('delete_categories')}}" method="post" onsubmit=" return confirm('Are You Sure?') ">
