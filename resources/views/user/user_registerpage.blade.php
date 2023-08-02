@@ -30,6 +30,6 @@
             <input class="form-control" id="exampleInputPassword1" type="password" name="password" id="">
         </div>
         <br>
-        <button class="btn btn-primary w-100" type="submit">Edit</button>
+        <button class="btn btn-primary w-100" type="submit">Add</button>
     </form>
 @endsection

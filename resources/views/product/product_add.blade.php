@@ -34,6 +34,6 @@
             <label for="exampleInputTitle1">Product Status:</label>
             <input class="form-control" id="exampleInputTitle1" type="text" name="productstatus" id="">
         </div>
-        <button class="btn btn-primary w-100" type="submit">Edit</button>
+        <button class="btn btn-primary w-100" type="submit">Add</button>
     </form>
 @endsection
