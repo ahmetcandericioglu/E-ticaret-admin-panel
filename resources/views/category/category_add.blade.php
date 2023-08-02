@@ -12,14 +12,19 @@
     @endif
     <form action="{{route('add_new_category')}}" method="post">
         @csrf
-        <p>Category Title:</p>
-        <input type="text" name="categorytitle" id="">
-        <p>Category Description:</p>
-        <input type="text" name="categorydescription" id="">
-        <p>Category Status:</p>
-        <input type="text" name="categorystatus" id="">
-        <br>
-        <br>
-        <button type="submit">Add</button>
+
+        <div class="form-group">
+            <label for="exampleInputTitle1">Category Title:</label>
+            <input class="form-control" id="exampleInputTitle1" type="text" name="categorytitle" id="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputTitle1">Category Description:</label>
+            <input class="form-control" id="exampleInputTitle1" type="text" name="categorydescription" id="">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputTitle1">Category Status:</label>
+            <input class="form-control" id="exampleInputTitle1" type="text" name="categorystatus" id="">
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Add</button>
     </form>
 @endsection

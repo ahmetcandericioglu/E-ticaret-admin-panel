@@ -31,7 +31,7 @@
 <section class="p-5 ">
     <div class="d-flex justify-content-center">
         <div class="d-flex align-items-center flex-column p-5 card w-25 shadow-lg">
-            <h1 class="display-3 font-weight-normal ">@yield('title')</h1>
+            <h1 class="display-4 font-weight-normal ">@yield('title')</h1>
             <hr class="w-100 ">
             @yield('content')
         </div>

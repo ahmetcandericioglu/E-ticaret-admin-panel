@@ -12,22 +12,27 @@
     @endif
     <form action="{{route('edit_product', ['product' => $product])}}" method="post">
         @csrf
-        <p>Product Title:</p>
-        <input type="text" name="producttitle" id="" value="{{$product->producttitle}}">
-        <p>Product Category Id:</p>
-        <select name="productcategoryid">
-            <option value="{{null}}" selected>Null</option>
-            @foreach($categories as $category)
-                <option value="{{$category->id}}" >{{$category->id." -> ". $category->categorytitle}}</option>
-            @endforeach
-        </select>
-
-        <p>Barcode:</p>
-        <input type="text" name="barcode_edit" id="" value="{{$product->barcode}}">
-        <p>Product Status:</p>
-        <input type="text" name="productstatus_edit" id="" value="{{$product->productstatus}}">
-        <br>
-        <br>
-        <button type="submit">Edit</button>
+        <div class="form-group">
+            <label for="exampleInputTitle1">Product Title:</label>
+            <input class="form-control" id="exampleInputTitle1" type="text" name="producttitle" id="" value="{{$product->producttitle}}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputTitle1">Product Category Id:</label>
+            <select class="form-control" name="productcategoryid" id="products">
+                <option value="{{null}}" selected>Null</option>
+                @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->id." -> ".$category->categorytitle}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputTitle1">Barcode:</label>
+            <input class="form-control" id="exampleInputTitle1" type="text" name="barcode_edit" id="" value="{{$product->barcode}}">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputTitle1">Product Status:</label>
+            <input class="form-control" id="exampleInputTitle1" type="text" name="productstatus_edit" id="" value="{{$product->productstatus}}">
+        </div>
+        <button class="btn btn-primary w-100" type="submit">Edit</button>
     </form>
 @endsection
