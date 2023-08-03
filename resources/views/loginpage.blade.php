@@ -1,6 +1,5 @@
 @extends('layout.loginLayout')
-@section('title')
-    Login
+@section('title')Login
 @endsection
 @section('content')
     <div class="mt-2">
