@@ -31,11 +31,13 @@
                 <input class="form-control border rounded" type="password" name="password" id="pass"
                        placeholder="Password">
             </div>
+            <div>
+                <a href="{{route('forget.password')}}">Forget Password?</a>
+            </div>
         </div>
 
         <div class="d-flex justify-content-center">
             <button class="btn btn-primary btn-lg w-100" type="submit">Login</button>
         </div>
-
     </form>
 @endsection

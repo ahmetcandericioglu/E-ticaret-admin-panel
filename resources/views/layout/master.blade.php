@@ -33,7 +33,7 @@
     <nav class=" navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-            <li class="nav-item d-none d-sm-inline-block">
+            <li class="nav-item d-none d-sm-inline-block" onmouseenter="">
                 <a href="{{route('home')}}" class="nav-link">Home</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
@@ -46,7 +46,7 @@
                 <a href="{{route('category')}}" class="nav-link">Category</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <span class="nav-link">
+                <span class="nav-link active">
                     <i class="fas fa-user"></i> {{Auth::user()->username}}
                 </span>
             </li>
