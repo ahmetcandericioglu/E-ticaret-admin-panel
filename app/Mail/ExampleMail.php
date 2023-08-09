@@ -13,12 +13,14 @@ class  ExampleMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $mailData;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->mailData = $mailData;
     }
 
     /**
@@ -27,7 +29,7 @@ class  ExampleMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Example Mail',
+            subject: 'Password Change',
         );
     }
 

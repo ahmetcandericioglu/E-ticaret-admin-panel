@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,7 @@ Route::get('/', [AuthController::class, 'index'])->name('login');
 Route::post('/login-post', [AuthController::class, 'loginControl'])->name('loginpost');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forget-password', [PasswordController::class, 'toPassword'])->name('forget.password');
-Route::post('/send-mail', [PasswordController::class, 'sendMail'])->name('send.mail');
-
+Route::post('send-mail', [MailController::class, 'index'])->name('send.mail');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', function () {
