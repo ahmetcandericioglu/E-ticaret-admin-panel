@@ -43,11 +43,11 @@ class CategoryController extends Controller
         $ids = $request->selectedids;
         if (!($ids == null)) {
             $categoryProducts = Product::query()->whereIn("productcategoryid", $ids)->get();
-            foreach ($categoryProducts as $product) {
-                $product->productcategoryid = null;
-                $product->save();
-            }
+            $categoryProducts->toQuery()->update([
+                'productcategoryid' => null,
+            ]);
             Category::whereIn('id', $ids)->delete();
+
         }
         return redirect()->route('list_category');
     }
@@ -83,10 +83,9 @@ class CategoryController extends Controller
     public function deleteCategory(Category $category){
 
         $categoryProducts = Product::where("productcategoryid", $category->id)->get() ;
-        foreach ($categoryProducts as $product){
-            $product->productcategoryid = null;
-            $product->save();
-        }
+        $categoryProducts->toQuery()->update([
+            'productcategoryid' => null,
+        ]);
         $category->delete();
         return redirect()->route('list_category');
     }
