@@ -78,6 +78,8 @@
         </div>
     </div>
 </section>
+</body>
+</html>
 <script src={{ URL::asset("plugins/jquery/jquery.min.js")}}></script>
 <!-- jQuery UI 1.11.4 -->
 <script src={{ URL::asset("plugins/jquery-ui/jquery-ui.min.js")}}></script>
@@ -107,5 +109,3 @@
 <script src={{ URL::asset("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}></script>
 <!-- AdminLTE App -->
 <script src={{ URL::asset("dist/js/pages/dashboard.js")}}></script>
-</body>
-</html>

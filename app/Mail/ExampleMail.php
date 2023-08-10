@@ -13,14 +13,14 @@ class  ExampleMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailData;
+    public $user;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($mailData)
+    public function __construct($user)
     {
-        $this->mailData = $mailData;
+        $this->user = $user;
     }
 
     /**
@@ -39,8 +39,12 @@ class  ExampleMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mailExample',
+            markdown: 'emails.forgot',
+            with: [
+                'user' => $this->user,
+            ]
         );
+
     }
 
     /**

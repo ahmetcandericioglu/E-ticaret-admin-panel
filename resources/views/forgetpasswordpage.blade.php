@@ -20,5 +20,9 @@
                    placeholder="User name">
         </div>
         <button class="btn btn-primary w-100" type="submit">Send password change link</button>
+        <br>
+        <br>
+        <a href="{{ route('login') }}">Back to login</a>
+
     </form>
 @endsection
