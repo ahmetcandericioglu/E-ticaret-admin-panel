@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\web;
 
 use App\Mail\ExampleMail;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 class PasswordController extends Controller

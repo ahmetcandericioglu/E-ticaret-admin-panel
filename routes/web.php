@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\web\AuthController;
+use App\Http\Controllers\web\CategoryController;
+use App\Http\Controllers\web\MailController;
+use App\Http\Controllers\web\PasswordController;
+use App\Http\Controllers\web\ProductController;
+use App\Http\Controllers\web\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PasswordController;
-use App\Http\Controllers\MailController;
 
 /*
 |--------------------------------------------------------------------------
