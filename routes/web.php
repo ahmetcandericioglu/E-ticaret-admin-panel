@@ -7,6 +7,7 @@ use App\Http\Controllers\web\PasswordController;
 use App\Http\Controllers\web\ProductController;
 use App\Http\Controllers\web\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Jobs\SendEmailJob;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,10 @@ Route::get('/forget-password', [PasswordController::class, 'toPassword'])->name(
 Route::post('send-mail', [MailController::class, 'index'])->name('send.mail');
 Route::get('/reset/{token}', [MailController::class, 'toReset']);
 Route::post('/reset-password/{id}', [MailController::class, 'reset'])->name('change.password');
+Route::get('/welcome-mail/{id}', [MailController::class, 'welcome'])->name('welcome.mail');
+Route::get('/register', [UserController::class, 'toRegisterNew'])->name('register.new');
+Route::post('/register-new', [UserController::class, 'registerNewUser'])->name('register.new.post');
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', function () {

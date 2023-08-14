@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,7 +17,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        if (!Cache::has('users'))
+        Cache::put('users', User::all(),120);
+
+        return Cache::get('users');
     }
 
     /**

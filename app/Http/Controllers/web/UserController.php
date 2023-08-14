@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -27,19 +28,59 @@ class UserController extends Controller
             "usertitle" => 'required',
         ]);
 
-        User::create([
+        $user = User::create([
             'usertitle' => $request->usertitle,
             'username' => $request->username,
             'password' => Hash::make($request->password),
         ]);
 
+        if (Cache::has('users')){
+            $users = Cache::get('users');
+            $users[] = $user;
+            Cache::put('users', $users, 180);
+        }
+        Cache::put('users', $users, 180);
+
         return redirect()->route('userlist');
+    }
+
+    public function registerNewUser(Request $request)
+    {
+        $request->validate([
+            "username" => 'required|alpha:ascii|unique:users',
+            "password" => 'required|min:6',
+            "usertitle" => 'required',
+        ]);
+
+        $id = User::create([
+            'usertitle' => $request->usertitle,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+        ]);
+
+        if (Cache::has('users')){
+            $users = Cache::get('users');
+            $users[] = $id;
+            Cache::put('users', $users, 180);
+        }
+        return redirect()->route('welcome.mail', ['id' => $id]);
     }
 
     public function toUserList()
     {
-        $users = User::all();
+        if (!Cache::has('users'))
+        {
+            $users = User::all();
+            Cache::put('users', $users, 180);
+        }
+        else
+            $users = Cache::get('users');
+
         return view('user/user_listpage', ["users" => $users]);
+    }
+    public function toRegisterNew()
+    {
+        return view('register');
     }
 
     public function toUpdateUser(User $user)
@@ -88,6 +129,11 @@ class UserController extends Controller
             $user->save();
         }
 
+        if (Cache::has('users')){
+            $users = Cache::get('users');
+            $users[] = $user;
+            Cache::put('users', $users, 180);
+        }
 
         return view('user/user_editpage', ['user' => $user]);
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\web;
 
+use App\Jobs\SendEmailJob;
 use App\Mail\ExampleMail;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -53,5 +54,14 @@ class MailController extends Controller
 
         return redirect()->back()->with(['error' => 'Passwords do not match']);
 
+    }
+
+    public function welcome($id)
+    {
+        $user = User::find($id);
+        $details['email'] = '4hcan2001@gmail.com';
+        $details['user'] = $user;
+        dispatch(new SendEmailJob($details));
+        return redirect()->route('login')->with(['success' => 'You registered successfully']);
     }
 }
