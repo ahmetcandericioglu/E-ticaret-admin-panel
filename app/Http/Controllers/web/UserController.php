@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Hash;
 
@@ -128,12 +129,8 @@ class UserController extends Controller
             $user->username = $request->username;
             $user->save();
         }
-
-        if (Cache::has('users')){
-            $users = Cache::get('users');
-            $users[] = $user;
+            $users = User::all();
             Cache::put('users', $users, 180);
-        }
 
         return view('user/user_editpage', ['user' => $user]);
 
@@ -141,6 +138,10 @@ class UserController extends Controller
 
     public function deleteUser(User $user){
         $user->delete();
+
+        $users = User::all();
+        Cache::put('users',$users);
+
         return redirect()->route('userlist');
     }
 
@@ -148,6 +149,8 @@ class UserController extends Controller
         $ids = $request->selectedids;
         if (!($ids == null))
         User::whereIn('id', $ids)->delete();
+        $users = User::all();
+        Cache::put('users',$users);
         return redirect()->route('userlist');
     }
 }

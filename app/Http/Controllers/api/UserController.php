@@ -83,6 +83,9 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
+        $users = User::all();
+        Cache::put('users', $users);
+
         return response()->json(['message' => 'User updated successfully']);
     }
 

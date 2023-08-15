@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -22,7 +23,14 @@ class ProductController extends Controller
 
     public function toProductList()
     {
-        $products = Product::all();
+
+        if (!Cache::has('products'))
+        {
+            $products = Product::all();
+            Cache::put('products', $products, 180);
+        }
+        else
+            $products = Cache::get('products');
         return view('product/product_listpage', ['products' => $products]);
 
     }
@@ -35,12 +43,15 @@ class ProductController extends Controller
             "productstatus" => "required",
         ]);
 
-        Product::create([
+        $product = Product::create([
             "producttitle" => $request->producttitle,
             "productcategoryid" => $request->productcategoryid,
             "barcode" => $request->barcode,
             "productstatus" => $request->productstatus
         ]);
+
+        $products = Product::all();
+        Cache::put('products', $products, 180);
 
         return redirect()->route('list_product');
     }
@@ -65,6 +76,9 @@ class ProductController extends Controller
         $product->productstatus = $request->productstatus_edit;
         $product->save();
 
+        $products = Product::all();
+        Cache::put('products', $products, 180);
+
         return redirect()->route('list_product');
     }
 
@@ -73,6 +87,8 @@ class ProductController extends Controller
         $ids = $request->selectedids;
         if (!($ids == null))
             Product::whereIn('id', $ids)->delete();
+        $products = Product::all();
+        Cache::put('products', $products, 180);
         return redirect()->route('list_product');
     }
 
@@ -83,6 +99,8 @@ class ProductController extends Controller
 
     public function deleteProduct(Product $product){
         $product->delete();
+        $products = Product::all();
+        Cache::put('products', $products, 180);
         return redirect()->route('list_product');
     }
 

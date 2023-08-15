@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Models\Product;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -15,7 +16,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return Product::all();
+        if (!Cache::has('products'))
+        {
+            $products = Product::all();
+            return Cache::put('products', $products, 180);
+        }
+        else
+            return $products = Cache::get('products');
     }
 
     /**
@@ -34,12 +41,19 @@ class ProductController extends Controller
             throw new HttpResponseException(response()->json($validator->errors(), 422));
         }
 
-        Product::create([
+        $product = Product::create([
             'producttitle' => $request->producttitle,
             'productcategoryid' => $request->productcategoryid,
             'barcode' => $request->barcode,
             'productstatus' => $request->productstatus,
         ]);
+
+        if (Cache::has('products')){
+            $products = Cache::get('products');
+            $products[] = $product;
+            Cache::put('products', $products, 180);
+        }
+        Cache::put('products', $products, 180);
 
         return response()->json(['message' => 'Product added successfully']);
 
@@ -83,6 +97,9 @@ class ProductController extends Controller
         $product->productstatus = $request->productstatus;
         $product->save();
 
+        $products = Product::all();
+        Cache::put('products', $products, 180);
+
         return response()->json(['message' => 'Product updated successfully']);
     }
 
@@ -96,6 +113,8 @@ class ProductController extends Controller
             return response()->json(['message' => 'There is no product with this id']);
 
         Product::destroy($id);
+        $products = Product::all();
+        Cache::put('products', $products, 180);
         return response()->json(['message' => 'Product deleted successfully']);
     }
 
@@ -103,6 +122,8 @@ class ProductController extends Controller
     {
         $ids = explode(",",$ids);
         Product::whereIn("id",$ids)->delete();
+        $products = Product::all();
+        Cache::put('products', $products, 180);
         return response()->json(['message' => 'Selected products deleted successfully']);
     }
 }
