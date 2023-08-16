@@ -46,9 +46,11 @@
                 <a href="{{route('category')}}" class="nav-link">Category</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <span class="nav-link active">
-                    <i class="fas fa-user"></i> {{Auth::user()->username}}
-                </span>
+                <a href="{{ route('profile',['id' => Auth::user()->id]) }}">
+                    <span class="nav-link active">
+                        <i class="fas fa-user"></i> {{Auth::user()->username}}
+                    </span>
+                </a>
             </li>
 
         </ul>
@@ -72,7 +74,7 @@
             <hr class="w-75">
             <div class="mt-2 w-100 d-flex justify-content-center">
                 <div class="d-flex align-items-center justify-content-center w-50">
-                @yield('content')
+                    @yield('content')
                 </div>
             </div>
         </div>

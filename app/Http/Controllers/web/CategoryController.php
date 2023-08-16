@@ -5,6 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,13 @@ class CategoryController extends Controller
     }
 
     public function toCategoryList(){
-        $categories = Category::all();
+        if (!Cache::has('categories'))
+        {
+            $categories = Product::all();
+            Cache::put('categories', $categories, 180);
+        }
+        else
+            $categories = Cache::get('categories');
         return view('category/category_listpage', ["categories" => $categories]);
     }
 

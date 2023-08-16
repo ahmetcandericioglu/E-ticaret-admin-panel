@@ -8,7 +8,7 @@ use App\Http\Controllers\web\ProductController;
 use App\Http\Controllers\web\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Jobs\SendEmailJob;
-
+use App\Http\Controllers\web\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +89,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/delete-products', 'deleteProducts')->name('delete_products');
     }
     );
+
+    Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/upload-image/{id}', [ProfileController::class, 'saveImage'])->name('upload.image');
 });
 
 

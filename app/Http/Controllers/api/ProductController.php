@@ -53,7 +53,6 @@ class ProductController extends Controller
             $products[] = $product;
             Cache::put('products', $products, 180);
         }
-        Cache::put('products', $products, 180);
 
         return response()->json(['message' => 'Product added successfully']);
 

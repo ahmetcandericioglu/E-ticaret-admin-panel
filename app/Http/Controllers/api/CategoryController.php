@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Models\Category;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -14,8 +15,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return $categories;
+        if (!Cache::has('categories'))
+        {
+            $categories = Category::all();
+            return Cache::put('categories', $categories, 180);
+        }
+        else
+            return $categories = Cache::get('categories');
     }
 
     /**
@@ -39,6 +45,12 @@ class CategoryController extends Controller
         $category->categorydescription = $request->categorydescription;
         $category->categorystatus = $request->categorystatus;
         $category->save();
+
+        if (Cache::has('categories')){
+            $categories = Cache::get('categories');
+            $categories[] = $category;
+            Cache::put('categories', $categories, 180);
+        }
 
         return response()->json(['message' => 'Category added']);
 
@@ -80,6 +92,9 @@ class CategoryController extends Controller
         $category->categorystatus = $request->categorystatus;
         $category->save();
 
+        $categories = Category::all();
+        Cache::put('categories', $categories, 180);
+
         return response()->json(['message' => 'Category updated']);
 
     }
@@ -94,6 +109,9 @@ class CategoryController extends Controller
             return response()->json(['message' => 'There is no category with this id']);
 
         Category::destroy($id);
+
+        $categories = Category::all();
+        Cache::put('categories', $categories, 180);
         return response()->json(['message' => 'Category deleted']);
     }
 
@@ -101,6 +119,9 @@ class CategoryController extends Controller
     {
         $ids = explode(",", $ids);
         Category::whereIn("id", $ids)->delete();
+
+        $categories = Category::all();
+        Cache::put('categories', $categories, 180);
         return response()->json(['message' => 'Selected categories deleted successfully']);
     }
 }
