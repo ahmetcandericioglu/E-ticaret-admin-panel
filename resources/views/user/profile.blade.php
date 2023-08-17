@@ -14,6 +14,7 @@
             <div class="card p-4 w-100 shadow-lg">
                 <div class=" image d-flex flex-column justify-content-center align-items-center">
                     <div class="card shadow-lg p-4">
+                        <a class="text-right font-weight-bold" href="{{ route('delete.image', ['name' => $user->username.".jpg"]) }}">x</a>
                         <img  src="
                     @if(\Illuminate\Support\Facades\File::exists(public_path("images/".$user->username.".jpg")))
                         {{ URL::asset("images/".$user->username.".jpg")}}

@@ -92,6 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profile/{id}', [ProfileController::class, 'index'])->name('profile');
     Route::post('/upload-image/{id}', [ProfileController::class, 'saveImage'])->name('upload.image');
+    Route::get('/delete-image/{name}', [ProfileController::class, 'deleteImage'])->name('delete.image');
 });
 
 

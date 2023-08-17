@@ -6,6 +6,7 @@ use App\Models\User;
 use http\Exception\InvalidArgumentException;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -24,6 +25,12 @@ class ProfileController extends Controller
 
         $image_name = $user->username.'.'.$request->image->extension();
         $request->image->move(public_path('images'),$image_name);
+        return redirect()->back();
+    }
+
+    public function deleteImage($name)
+    {
+        $deletedFile = File::delete(public_path('/images/'.$name));
         return redirect()->back();
     }
 }
